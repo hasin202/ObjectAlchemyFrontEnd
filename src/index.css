@@ -1,3 +1,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+/* styles.css */
+.variable-value {
+    display: inline-block;
+    padding-right: 6px;
+    position: relative;
+    cursor: default;
+    word-break: break-all;
+  }
+  
+  .variable-value .string-value {
+    cursor: default;
+  }
+  
