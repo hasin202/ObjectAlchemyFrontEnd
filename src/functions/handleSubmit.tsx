@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosError } from "axios";
 import { TRequest } from "../types/form";
 import IResponse from "../types/response";
 import { Dispatch, SetStateAction } from "react";
@@ -12,7 +12,8 @@ const handleSubmit = async (
   const { schema, includeImg, imagePrompt, number_of_objects, extraInfo } =
     values;
 
-  setResponse({ ...response, data: {}, error: {} });
+  // Reset the response state to have empty data and error objects
+  setResponse((prevResponse) => ({ ...prevResponse, data: {}, error: {} }));
 
   const endpoint: string = includeImg ? "img" : "";
   const finalSchema: Record<string, string> = {};
@@ -26,23 +27,42 @@ const handleSubmit = async (
     img_info: imagePrompt,
   };
 
-  setLoading(true);
+  setLoading((_) => true);
 
   try {
     const data: AxiosResponse = await axios.post(
       `https://object-alchemy-khaki.vercel.app/${endpoint}`,
       request
     );
-    setResponse({ ...response, data: data.data });
-    setLoading(false);
+
+    // Update the response state with the received data
+    setResponse((prevResponse) => ({ ...prevResponse, data: data.data }));
+    setLoading((_) => true);
   } catch (error) {
-    if (
-      axios.isAxiosError<Omit<IResponse, "data">>(error) &&
-      error.response?.data?.error
-    ) {
-      setResponse({ ...response, error: error.response?.data?.error });
+    if (axios.isAxiosError<Omit<IResponse, "data">>(error)) {
+      // Check if 'error.response.data.error' is defined and of the expected shape
+      const responseError = error.response?.data?.error;
+      if (typeof responseError === "object" && responseError !== null) {
+        setResponse((prevResponse) => ({
+          ...prevResponse,
+          error: responseError as Record<string, number | string>,
+        }));
+      } else {
+        // Handle the case where 'error.response.data.error' is not as expected
+        // You can set a default error value or handle it accordingly.
+        setResponse((prevResponse) => ({
+          ...prevResponse,
+          error: { message: "An unexpected error occurred." },
+        }));
+      }
+    } else {
+      // Handle other types of errors if needed.
+      setResponse((prevResponse) => ({
+        ...prevResponse,
+        error: { message: "An unexpected error occurred." },
+      }));
     }
-    setLoading(false);
+    setLoading((_) => false);
   }
 };
 
