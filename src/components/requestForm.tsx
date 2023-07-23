@@ -9,21 +9,16 @@ import handleSubmit from "../functions/handleSubmit";
 import IResponse from "../types/response";
 
 interface Props {
-  response: IResponse;
   setResponse: Dispatch<SetStateAction<IResponse>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-const RequestForm: React.FC<Props> = ({
-  response,
-  setResponse,
-  setLoading,
-}) => {
+const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values) => {
-        handleSubmit(values, response, setResponse, setLoading);
+        handleSubmit(values, setResponse, setLoading);
       }}
       enableReinitialize={true}
     >

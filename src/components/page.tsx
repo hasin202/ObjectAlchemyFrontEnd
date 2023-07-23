@@ -31,11 +31,7 @@ const Page: React.FC = () => {
       </p>
       <Error response={response} />
       <div className="flex w-full flex-col px-8 py-12 border rounded-lg text-md">
-        <RequestForm
-          response={response}
-          setResponse={setResponse}
-          setLoading={setLoading}
-        />
+        <RequestForm setResponse={setResponse} setLoading={setLoading} />
       </div>
       {loading && !isDataAvailable && <Loader />}
       <div className="sm:w-96 md:w-full">

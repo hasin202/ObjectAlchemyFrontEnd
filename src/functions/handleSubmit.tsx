@@ -1,11 +1,10 @@
-import axios, { AxiosResponse, AxiosError } from "axios";
+import axios, { AxiosResponse } from "axios";
 import { TRequest } from "../types/form";
 import IResponse from "../types/response";
 import { Dispatch, SetStateAction } from "react";
 
 const handleSubmit = async (
   values: TRequest,
-  response: IResponse,
   setResponse: Dispatch<SetStateAction<IResponse>>,
   setLoading: Dispatch<SetStateAction<boolean>>
 ) => {
