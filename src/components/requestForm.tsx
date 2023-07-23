@@ -74,6 +74,22 @@ const RequestForm: React.FC<Props> = ({
             </div>
             {values.includeImg ? (
               <>
+                <div
+                  className="flex flex-col bg-purple-100 border border-purple-400 text-purple-700 px-4 py-3 rounded relative"
+                  role="alert"
+                >
+                  <p className="text-lg font-bold">Please note that:</p>
+                  <ul className="list-disc list-inside">
+                    <li>
+                      To generate an image, set the property value to "Image"
+                    </li>
+                    <li>
+                      The provided link for generating images will be active for
+                      2 hours only. If you wish to keep the image permanently,
+                      please download it within this timeframe.
+                    </li>
+                  </ul>
+                </div>
                 <label htmlFor="imagePrompt">Image prompt:</label>
                 <Field
                   id="imagePrompt"
