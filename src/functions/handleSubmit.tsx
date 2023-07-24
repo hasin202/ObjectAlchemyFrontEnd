@@ -6,7 +6,6 @@ import { Dispatch, SetStateAction } from "react";
 const handleSubmit = async (
   values: TRequest,
   setResponse: Dispatch<SetStateAction<IResponse>>,
-  setLoading: Dispatch<SetStateAction<boolean>>
 ) => {
   const { schema, includeImg, imagePrompt, number_of_objects, extraInfo } =
     values;
@@ -26,7 +25,6 @@ const handleSubmit = async (
     img_info: imagePrompt,
   };
 
-  setLoading((_) => true);
 
   try {
     const data: AxiosResponse = await axios.post(
@@ -36,7 +34,6 @@ const handleSubmit = async (
 
     // Update the response state with the received data
     setResponse((prevResponse) => ({ ...prevResponse, data: data.data }));
-    setLoading((_) => true);
   } catch (error) {
     if (axios.isAxiosError<Omit<IResponse, "data">>(error)) {
       // Check if 'error.response.data.error' is defined and of the expected shape
@@ -51,17 +48,16 @@ const handleSubmit = async (
         // You can set a default error value or handle it accordingly.
         setResponse((prevResponse) => ({
           ...prevResponse,
-          error: { message: "An unexpected error occurred." },
+          error: { message: "Something went wrong on our end. Try again, if this message keeps appearing then please wait and try again later" },
         }));
       }
     } else {
       // Handle other types of errors if needed.
       setResponse((prevResponse) => ({
         ...prevResponse,
-        error: { message: "An unexpected error occurred." },
+        error: { message:"Something went wrong on our end. Try again, if this message keeps appearing then please wait and try again later" },
       }));
     }
-    setLoading((_) => false);
   }
 };
 

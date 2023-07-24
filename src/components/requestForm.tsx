@@ -17,15 +17,16 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={(values) => {
-        handleSubmit(values, setResponse, setLoading);
+      onSubmit={async (values) => {
+        await handleSubmit(values, setResponse);
       }}
       enableReinitialize={true}
     >
-      {({ values, setFieldValue }) => {
+      {({ values, setFieldValue, isSubmitting }) => {
         useEffect(() => {
           handleCheckBoxToggle(values, setFieldValue);
         }, [values.includeImg]);
+        useEffect(() => {setLoading((_) => (isSubmitting))}, [isSubmitting])
         return (
           <Form className="flex flex-col gap-4">
             {renderFields(values, setFieldValue)}
@@ -98,7 +99,7 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
             ) : (
               ""
             )}
-            <button type="submit" className={btn}>
+            <button type="submit" className={btn} disabled={isSubmitting}>
               Submit
             </button>
           </Form>

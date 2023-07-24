@@ -33,10 +33,10 @@ const Page: React.FC = () => {
       <div className="flex w-full flex-col px-8 py-12 border rounded-lg text-md">
         <RequestForm setResponse={setResponse} setLoading={setLoading} />
       </div>
-      {loading && !isDataAvailable && <Loader />}
-      <div className="sm:w-96 md:w-full">
+      {loading && <Loader />}
+      {!loading && (<div className="sm:w-96 md:w-full">
         {isDataAvailable && <ReactJson src={response.data} />}
-      </div>
+      </div>)}
     </div>
   );
 };
