@@ -49,7 +49,7 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
               className={input}
               type="number"
               min="1"
-              max={values.includeImg ? 8 : 12}
+              max={values.includeImg ? 8 : 8}
             />
 
             <label htmlFor="extraInfo">Extra information:</label>
