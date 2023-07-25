@@ -25,12 +25,12 @@ const Page: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col gap-8 sm:w-3/4 md:w-1/2">
+    <div className="flex flex-col gap-8 w-full min-[600px]:w-1/2">
       <p className="font-bold text-3xl">
         Object <span className="text-purple-500">Alchemy</span>
       </p>
       <Error response={response} />
-      <div className="flex w-full flex-col px-8 py-12 border rounded-lg text-md">
+      <div className="flex w-full flex-col px-6 py-6 border rounded-lg text-md">
         <RequestForm setResponse={setResponse} setLoading={setLoading} />
       </div>
       {loading && <Loader />}

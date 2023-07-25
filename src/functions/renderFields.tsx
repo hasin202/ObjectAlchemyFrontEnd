@@ -11,8 +11,8 @@ const renderFields = (
   ) => Promise<void | FormikErrors<TRequest>>
 ) =>
   values.schema.map((_, i) => (
-    <div className="flex gap-4" key={i}>
-      <div className="flex gap-4 max-[600px]:flex-col w-full ">
+    <div className="flex max-[600px]:flex-col gap-4" key={i}>
+      <div className="flex gap-4 w-full ">
         <div className="flex grow flex-col gap-2">
           <label
             htmlFor={`schema.${i}.propertyName`}
@@ -34,7 +34,7 @@ const renderFields = (
             htmlFor={`schema.${i}.propertyName`}
             className="font-bold visible"
           >
-            {`Value ${i + 1}:`}{" "}
+            {`Data type ${i + 1}:`}{" "}
           </label>
           <Field
             name={`schema.${i}.value`}
@@ -54,7 +54,7 @@ const renderFields = (
             values.schema.filter((_, index) => index !== i)
           )
         }
-        className={`${btn} mt-6 `}
+        className={`${btn} mt-6 max-[600px]:mt-0 max-[600px]:flex max-[600px]:justify-end	 `}
         disabled={i === 0}
       >
         <svg

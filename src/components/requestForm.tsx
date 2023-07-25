@@ -26,7 +26,9 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
         useEffect(() => {
           handleCheckBoxToggle(values, setFieldValue);
         }, [values.includeImg]);
-        useEffect(() => {setLoading((_) => (isSubmitting))}, [isSubmitting])
+        useEffect(() => {
+          setLoading((_) => isSubmitting);
+        }, [isSubmitting]);
         return (
           <Form className="flex flex-col gap-4">
             {renderFields(values, setFieldValue)}
@@ -64,7 +66,7 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
                 htmlFor="includeImg"
                 className="flex items-center italic font-bold mr-4"
               >
-                Include Imgae:
+                Include Image:
               </label>
               <Field id="includeImg" type="checkbox" name="includeImg" />
             </div>
