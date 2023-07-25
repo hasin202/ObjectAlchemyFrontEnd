@@ -34,9 +34,11 @@ const Page: React.FC = () => {
         <RequestForm setResponse={setResponse} setLoading={setLoading} />
       </div>
       {loading && <Loader />}
-      {!loading && (<div className="sm:w-96 md:w-full">
-        {isDataAvailable && <ReactJson src={response.data} />}
-      </div>)}
+      {!loading && (
+        <div className="sm:w-96 md:w-full">
+          {isDataAvailable && <ReactJson src={response.data} />}
+        </div>
+      )}
     </div>
   );
 };
