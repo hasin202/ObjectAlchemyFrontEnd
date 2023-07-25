@@ -104,6 +104,17 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
             <button type="submit" className={btn} disabled={isSubmitting}>
               Submit
             </button>
+            {isSubmitting && (
+              <div
+                className="flex flex-col bg-orange-100 border border-orange-400 text-orange-700 px-4 py-3 rounded relative"
+                role="alert"
+              >
+                <p className="block sm:inline">
+                  Requests will time out after 1 minute, so there's a current
+                  limit on the number of objects you can create in one request.
+                </p>
+              </div>
+            )}
           </Form>
         );
       }}
