@@ -82,6 +82,15 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
                       To generate an image, set the property value to "Image"
                     </li>
                     <li>
+                      If you need help writing an image prompt check out this{" "}
+                      <a
+                        className="underline font-bold"
+                        href="https://docs.google.com/document/d/11WlzjBT0xRpQhP9tFMtxzd0q6ANIdHPUBkMV-YB043U/edit#heading=h.sqbemjap41ye"
+                      >
+                        link
+                      </a>
+                    </li>
+                    <li>
                       The provided link for generating images will be active for
                       2 hours only. If you wish to keep the image permanently,
                       please download it within this timeframe.
