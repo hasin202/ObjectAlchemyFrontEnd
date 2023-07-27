@@ -22,7 +22,11 @@ const Error: React.FC<Props> = ({ response }) => {
             </p>
             <p>
               For help on error codes checkout{" "}
-              <a href={response.error.help} className="underline font-bold">
+              <a
+                href={response.error.help}
+                className="underline font-bold"
+                target="_blank"
+              >
                 this link
               </a>
             </p>

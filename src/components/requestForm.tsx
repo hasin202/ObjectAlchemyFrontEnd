@@ -86,6 +86,7 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
                       <a
                         className="underline font-bold"
                         href="https://docs.google.com/document/d/11WlzjBT0xRpQhP9tFMtxzd0q6ANIdHPUBkMV-YB043U/edit#heading=h.sqbemjap41ye"
+                        target="_blank"
                       >
                         link
                       </a>
