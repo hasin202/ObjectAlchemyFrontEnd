@@ -4,6 +4,7 @@ import IResponse from "../types/response";
 import Error from "./error";
 import ReactJson from "react-json-view-c2";
 import Loader from "./loader";
+import DropDown from "./guideDropDown";
 import "../index.css";
 
 const Page: React.FC = () => {
@@ -26,9 +27,12 @@ const Page: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-8 w-full min-[600px]:w-1/2">
-      <p className="font-bold text-3xl">
-        Object <span className="text-purple-500">Alchemy</span>
-      </p>
+      <div className="flex w-full justify-between">
+        <p className="font-bold text-3xl">
+          Object <span className="text-purple-500">Alchemy</span>
+        </p>
+        <DropDown />
+      </div>
       <Error response={response} />
       <div className="flex w-full flex-col px-6 py-6 border rounded-lg text-md">
         <RequestForm setResponse={setResponse} setLoading={setLoading} />
