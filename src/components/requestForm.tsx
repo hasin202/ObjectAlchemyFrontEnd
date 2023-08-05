@@ -79,9 +79,6 @@ const RequestForm: React.FC<Props> = ({ setResponse, setLoading }) => {
                   <p className="text-lg font-bold">Please note that:</p>
                   <ul className="list-disc list-inside">
                     <li>
-                      To generate an image, set the property value to "Image"
-                    </li>
-                    <li>
                       If you need help writing an image prompt check out this{" "}
                       <a
                         className="underline font-bold"

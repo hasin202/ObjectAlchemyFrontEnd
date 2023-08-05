@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 
 const handleSubmit = async (
   values: TRequest,
-  setResponse: Dispatch<SetStateAction<IResponse>>,
+  setResponse: Dispatch<SetStateAction<IResponse>>
 ) => {
   const { schema, includeImg, imagePrompt, number_of_objects, extraInfo } =
     values;
@@ -14,17 +14,19 @@ const handleSubmit = async (
   setResponse((prevResponse) => ({ ...prevResponse, data: {}, error: {} }));
 
   const endpoint: string = includeImg ? "img" : "";
-  const finalSchema: Record<string, string> = {};
+  let finalSchema: Record<string, string> = {};
   schema.forEach((element) => {
     finalSchema[element.propertyName] = element.value;
   });
+  if (includeImg) {
+    finalSchema["Image"] = "Image";
+  }
   const request = {
     object: finalSchema,
     number_of_objects: number_of_objects,
     extra_info: extraInfo,
     img_info: imagePrompt,
   };
-
 
   try {
     const data: AxiosResponse = await axios.post(
@@ -48,14 +50,20 @@ const handleSubmit = async (
         // You can set a default error value or handle it accordingly.
         setResponse((prevResponse) => ({
           ...prevResponse,
-          error: { message: "Something went wrong on our end. Try again, if this message keeps appearing then please wait and try again later" },
+          error: {
+            message:
+              "Something went wrong on our end. Try again, if this message keeps appearing then please wait and try again later",
+          },
         }));
       }
     } else {
       // Handle other types of errors if needed.
       setResponse((prevResponse) => ({
         ...prevResponse,
-        error: { message:"Something went wrong on our end. Try again, if this message keeps appearing then please wait and try again later" },
+        error: {
+          message:
+            "Something went wrong on our end. Try again, if this message keeps appearing then please wait and try again later",
+        },
       }));
     }
   }
