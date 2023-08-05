@@ -19,7 +19,6 @@ const Page: React.FC = () => {
     if (Object.keys(response.data).length > 0) {
       setIsDataAvailable(true);
       setLoading(false);
-      console.log(response);
     }
   }, [response]);
 
