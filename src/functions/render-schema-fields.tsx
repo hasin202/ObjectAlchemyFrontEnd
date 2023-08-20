@@ -2,7 +2,7 @@ import { TRequest } from "../types/form";
 import { Field, FormikErrors } from "formik";
 import { input, btn } from "../styles";
 
-const renderFields = (
+const renderSchemaFields = (
   values: TRequest,
   setFieldValue: (
     field: string,
@@ -69,4 +69,4 @@ const renderFields = (
       </button>
     </div>
   ));
-export default renderFields;
+export default renderSchemaFields;

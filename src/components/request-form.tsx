@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from "react";
 import { Formik } from "formik";
 import { initialValues } from "../initialValues";
-import handleSubmit from "../functions/handleSubmit";
+import handleSubmit from "../functions/handle-submit";
 import IResponse from "../types/response";
 import ActualForm from "./actual-form";
 

@@ -1,7 +1,7 @@
 import { TRequest } from "../types/form";
 import { FormikErrors } from "formik";
 
-const handleCheckBoxToggle = (
+const toggleCheckBox = (
   values: TRequest,
   setFieldValue: (
     field: string,
@@ -13,4 +13,4 @@ const handleCheckBoxToggle = (
     setFieldValue("imagePrompt", "");
 };
 
-export default handleCheckBoxToggle;
+export default toggleCheckBox;

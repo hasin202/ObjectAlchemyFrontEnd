@@ -1,9 +1,9 @@
 import { Field, Form, useFormikContext } from "formik";
 import { TRequest } from "../types/form";
 import { useEffect, Dispatch, SetStateAction } from "react";
-import renderFields from "../functions/renderFields";
-import handleCheckBoxToggle from "../functions/checkboxToggle";
-import handleAddField from "../functions/handleAddField";
+import renderSchemaFields from "../functions/render-schema-fields";
+import toggleCheckBox from "../functions/toggle-check-box";
+import addSchemaRow from "../functions/add-schema-row";
 import { input, btn } from "../styles";
 
 interface Props {
@@ -14,7 +14,7 @@ const ActualForm: React.FC<Props> = ({ setLoading }) => {
   const { values, setFieldValue, isSubmitting } = useFormikContext<TRequest>();
 
   useEffect(() => {
-    handleCheckBoxToggle(values, setFieldValue);
+    toggleCheckBox(values, setFieldValue);
   }, [values.includeImg]);
 
   useEffect(() => {
@@ -23,11 +23,11 @@ const ActualForm: React.FC<Props> = ({ setLoading }) => {
 
   return (
     <Form className="flex flex-col gap-4">
-      {renderFields(values, setFieldValue)}
+      {renderSchemaFields(values, setFieldValue)}
       <button
         type="button"
         data-testid="add-field"
-        onClick={() => handleAddField(values, setFieldValue)}
+        onClick={() => addSchemaRow(values, setFieldValue)}
         className={btn}
       >
         Add Field

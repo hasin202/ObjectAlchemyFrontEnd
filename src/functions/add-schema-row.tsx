@@ -1,7 +1,7 @@
 import { TRequest } from "../types/form";
 import { FormikErrors } from "formik";
 
-const handleAddField = (
+const addSchemaRow = (
   values: TRequest,
   setFieldValue: (
     field: string,
@@ -16,4 +16,4 @@ const handleAddField = (
   setFieldValue("schema", [...values.schema, newProp]);
 };
 
-export default handleAddField;
+export default addSchemaRow;
