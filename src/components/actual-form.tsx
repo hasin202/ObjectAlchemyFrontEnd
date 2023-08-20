@@ -26,19 +26,17 @@ const ActualForm: React.FC<Props> = ({ setLoading }) => {
       {renderSchemaFields(values, setFieldValue)}
       <button
         type="button"
-        data-testid="add-field"
         onClick={() => addSchemaRow(values, setFieldValue)}
         className={btn}
       >
         Add Field
       </button>
-      <label htmlFor="number_of_objects">Number of objects:</label>
+      <label htmlFor="number-of-objects">Number of objects:</label>
       <Field
-        id="number_of_objects"
-        data-testid="number_of_objects"
-        name="number_of_objects"
+        id="number-of-objects"
+        name="numberOfObjects"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setFieldValue(`number_of_objects`, e.target.value)
+          setFieldValue(`numberOfObjects`, e.target.value)
         }
         className={input}
         type="number"
@@ -49,7 +47,6 @@ const ActualForm: React.FC<Props> = ({ setLoading }) => {
       <label htmlFor="extraInfo">Extra information:</label>
       <Field
         id="extraInfo"
-        data-testid="extraInfo"
         name="extraInfo"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setFieldValue(`extraInfo`, e.target.value)
@@ -58,12 +55,12 @@ const ActualForm: React.FC<Props> = ({ setLoading }) => {
       />
       <div className="flex">
         <label
-          htmlFor="includeImg"
+          htmlFor="include-img"
           className="flex items-center italic font-bold mr-4"
         >
           Include Image:
         </label>
-        <Field id="includeImg" type="checkbox" name="includeImg" />
+        <Field id="include-img" type="checkbox" name="includeImg" />
       </div>
       {values.includeImg && (
         <>
@@ -90,9 +87,9 @@ const ActualForm: React.FC<Props> = ({ setLoading }) => {
               </li>
             </ul>
           </div>
-          <label htmlFor="imagePrompt">Image prompt:</label>
+          <label htmlFor="image-prompt">Image prompt:</label>
           <Field
-            id="imagePrompt"
+            id="image-prompt"
             name="imagePrompt"
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setFieldValue(`imagePrompt`, e.target.value)

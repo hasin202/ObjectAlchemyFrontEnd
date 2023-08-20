@@ -7,7 +7,7 @@ const handleSubmit = async (
   values: TRequest,
   setResponse: Dispatch<SetStateAction<IResponse>>
 ) => {
-  const { schema, includeImg, imagePrompt, number_of_objects, extraInfo } =
+  const { schema, includeImg, imagePrompt, numberOfObjects, extraInfo } =
     values;
 
   // Reset the response state to have empty data and error objects
@@ -23,7 +23,7 @@ const handleSubmit = async (
   }
   const request = {
     object: finalSchema,
-    number_of_objects: number_of_objects,
+    number_of_objects: numberOfObjects,
     extra_info: extraInfo,
     img_info: imagePrompt,
   };
