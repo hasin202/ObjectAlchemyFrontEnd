@@ -3,6 +3,16 @@ import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 const DropDown: React.FC = () => {
+  const guides = [
+    {
+      name: "Standard Generation",
+      url: "https://app.tango.us/app/workflow/Using-Object-Alchemy-to-generate-your-dummy-data--Step-by-Step-Instructions-98ed3cc3b3b14bbca65d6b5f98f9ddf5",
+    },
+    {
+      name: "Image Generation",
+      url: "https://app.tango.us/app/workflow/Using-Object-Alchemy-to-generate-your-dummy-data-with-images--Step-by-Step-Instructions-cea58ca2ae044570bee2b1451fc4138e",
+    },
+  ];
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -25,32 +35,21 @@ const DropDown: React.FC = () => {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1 flex flex-col">
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="https://app.tango.us/app/workflow/Using-Object-Alchemy-to-generate-your-dummy-data--Step-by-Step-Instructions-98ed3cc3b3b14bbca65d6b5f98f9ddf5"
-                  className={`"block px-4 py-2 text-sm" ${
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700"
-                  }`}
-                  target="_blank"
-                >
-                  Standard Generation
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="https://app.tango.us/app/workflow/Using-Object-Alchemy-to-generate-your-dummy-data-with-images--Step-by-Step-Instructions-cea58ca2ae044570bee2b1451fc4138e"
-                  className={`"block px-4 py-2 text-sm" ${
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700"
-                  }`}
-                  target="_blank"
-                >
-                  Image Generation
-                </a>
-              )}
-            </Menu.Item>
+            {guides.map((guide, i) => (
+              <Menu.Item key={i}>
+                {({ active }) => (
+                  <a
+                    href={guide.url}
+                    className={`"block px-4 py-2 text-sm" ${
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700"
+                    }`}
+                    target="_blank"
+                  >
+                    {guide.name}
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
           </div>
         </Menu.Items>
       </Transition>
