@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import RequestForm from "./requestForm";
+import RequestForm from "./request-form";
 import IResponse from "../types/response";
 import Error from "./error";
 import Loader from "./loader";
-import DropDown from "./guideDropDown";
+import DropDown from "./guide-drop-down";
 import "../index.css";
 import { JsonViewer, defineDataType } from "@textea/json-viewer";
 

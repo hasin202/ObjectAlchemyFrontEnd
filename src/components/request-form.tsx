@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { initialValues } from "../initialValues";
 import handleSubmit from "../functions/handleSubmit";
 import IResponse from "../types/response";
-import ActualForm from "./ActualForm";
+import ActualForm from "./actual-form";
 
 interface Props {
   setResponse: Dispatch<SetStateAction<IResponse>>;
